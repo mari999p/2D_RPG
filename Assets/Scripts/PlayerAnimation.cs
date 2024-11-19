@@ -6,9 +6,12 @@ namespace RPG
     {
         #region Variables
 
+        private static readonly int Attack = Animator.StringToHash("attack");
+        private static readonly int Death = Animator.StringToHash("death");
+        private static readonly int Jump = Animator.StringToHash("jump");
+
         private static readonly int Movement = Animator.StringToHash("movement");
         private static readonly int Run = Animator.StringToHash("run");
-        private static readonly int Death = Animator.StringToHash("death");
 
         [SerializeField] private Animator _animator;
 
@@ -20,15 +23,26 @@ namespace RPG
         {
             _animator.SetFloat(Movement, speed);
         }
-        public void TriggerDeath()
-        {
-            _animator.SetTrigger(Death);
-        }
+
         public void SetRunning(bool isRunning)
         {
             _animator.SetBool(Run, isRunning);
         }
-        
+
+        public void TriggerAttack()
+        {
+            _animator.SetTrigger(Attack);
+        }
+
+        public void TriggerDeath()
+        {
+            _animator.SetTrigger(Death);
+        }
+
+        public void TriggerJump()
+        {
+            _animator.SetTrigger(Jump);
+        }
 
         #endregion
     }
